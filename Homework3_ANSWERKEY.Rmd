@@ -1,0 +1,84 @@
+---
+title: "Homework 3 dada2 setup - Spring 2019 - ANSWER KEY "
+author: "Melinda Higgins"
+date: "March 25, 2019"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Document package installation
+
+Use `library()` function to load each package to show that the packages are installed.
+
+You have to use the BioConductor approach and tools to install the `dada2` (which includes `Shortread`), `phyloseq` and `DECIPHER`. I installed my packages using a separate R script (see "packages_install.R" stored in this Github repository). But here is the script code to install these packages.
+
+```
+# install BiocManager
+
+if (!requireNamespace("BiocManager"))
+  install.packages("BiocManager")
+BiocManager::install()
+
+# install dada2 - includes ShortRead pacakge
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("dada2", version = "3.8")
+
+# install phyloseq
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("phyloseq", version = "3.8")
+
+# install DECIPHER
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("DECIPHER", version = "3.8")
+```
+
+`ggplot2` can be installed from CRAN using the RStudio /Tools/Install Packages menu.
+
+```{r}
+library(dada2)
+library(ShortRead)
+library(phyloseq)
+library(DECIPHER)
+library(ggplot2)
+```
+
+## Shows you've downloaded the `fastq` files
+
+The `dada2` tutorial explains this part at [http://benjjneb.github.io/dada2/tutorial.html](http://benjjneb.github.io/dada2/tutorial.html).
+
+```{r}
+# CHANGE ME to the directory containing the fastq files after unzipping.
+# path <- "~/MiSeq_SOP" # MAC path specification
+path <- "./MiSeq_SOP" # PC path specification
+list.files(path)
+```
+
+## Get the Silva 132 training set and the Silva 132 species assignment zip files
+
+see [https://zenodo.org/record/1172783#.XJkdyKBKiUl](https://zenodo.org/record/1172783#.XJkdyKBKiUl)
+
+Put these 2 `*.gz` files into the same directory as specified above.
+
+## Get SILVA SSU r132 RData object
+
+See [http://www2.decipher.codes/Downloads.html](http://www2.decipher.codes/Downloads.html) - download the training file for Silva SSU r132. This is a `RData` file. Put in same directory as above.
+
+List files again 
+
+```{r}
+path <- "./MiSeq_SOP"
+list.files(path)
+```
+
